@@ -9,7 +9,7 @@ pr:
     include: [terraform/*]
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: ubuntu-24.04
 
 variables:
   serviceConnection: sc-p09utb-azure
