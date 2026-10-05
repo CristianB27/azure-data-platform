@@ -8,6 +8,12 @@ pr:
   paths:
     include: [terraform/*]
 
+parameters:
+- name: deployExpensive
+  displayName: Desplegar recursos costosos (Event Hubs, Stream Analytics)
+  type: boolean
+  default: false
+
 pool:
   vmImage: ubuntu-24.04
 
@@ -58,6 +64,7 @@ stages:
           export ARM_TENANT_ID=$tenantId
           export ARM_OIDC_TOKEN=$idToken
           export ARM_SUBSCRIPTION_ID=$(subscriptionId)
+          export TF_VAR_deploy_expensive=${{ lower(parameters.deployExpensive) }}
           terraform init -input=false
           terraform plan -out=tfplan -input=false
     - publish: terraform/tfplan
