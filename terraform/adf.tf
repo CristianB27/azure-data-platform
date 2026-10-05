@@ -88,6 +88,7 @@ resource "azurerm_data_factory_dataset_delimited_text" "origen" {
   }
 
   column_delimiter    = ","
+  row_delimiter       = "\n"
   encoding            = "UTF-8"
   first_row_as_header = true
 }
