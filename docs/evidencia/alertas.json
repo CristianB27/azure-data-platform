@@ -1,0 +1,213 @@
+{
+  "items": [
+    {
+      "PartitionKey": "sensor-01",
+      "RowKey": "2026-10-05T01:23:00.0000000Z",
+      "Timestamp": "2026-10-05T01:23:56.448601+00:00",
+      "etag": "W/\"datetime'2026-10-05T01%3A23%3A56.4486018Z'\"",
+      "max_temperature": 31.57,
+      "partition_key": "sensor-01",
+      "row_key": "2026-10-05T01:23:00.0000000Z",
+      "threshold": {
+        "edm_type": "Edm.Int64",
+        "value": 30
+      }
+    },
+    {
+      "PartitionKey": "sensor-01",
+      "RowKey": "2026-10-05T01:25:00.0000000Z",
+      "Timestamp": "2026-10-05T01:26:01.313070+00:00",
+      "etag": "W/\"datetime'2026-10-05T01%3A26%3A01.3130702Z'\"",
+      "max_temperature": 31.36,
+      "partition_key": "sensor-01",
+      "row_key": "2026-10-05T01:25:00.0000000Z",
+      "threshold": {
+        "edm_type": "Edm.Int64",
+        "value": 30
+      }
+    },
+    {
+      "PartitionKey": "sensor-02",
+      "RowKey": "2026-10-05T01:23:00.0000000Z",
+      "Timestamp": "2026-10-05T01:23:56.460548+00:00",
+      "etag": "W/\"datetime'2026-10-05T01%3A23%3A56.4605487Z'\"",
+      "max_temperature": 37.39,
+      "partition_key": "sensor-02",
+      "row_key": "2026-10-05T01:23:00.0000000Z",
+      "threshold": {
+        "edm_type": "Edm.Int64",
+        "value": 30
+      }
+    },
+    {
+      "PartitionKey": "sensor-02",
+      "RowKey": "2026-10-05T01:24:00.0000000Z",
+      "Timestamp": "2026-10-05T01:24:55.766895+00:00",
+      "etag": "W/\"datetime'2026-10-05T01%3A24%3A55.7668957Z'\"",
+      "max_temperature": 32.93,
+      "partition_key": "sensor-02",
+      "row_key": "2026-10-05T01:24:00.0000000Z",
+      "threshold": {
+        "edm_type": "Edm.Int64",
+        "value": 30
+      }
+    },
+    {
+      "PartitionKey": "sensor-02",
+      "RowKey": "2026-10-05T01:26:00.0000000Z",
+      "Timestamp": "2026-10-05T01:27:01.766226+00:00",
+      "etag": "W/\"datetime'2026-10-05T01%3A27%3A01.7662262Z'\"",
+      "max_temperature": 31.03,
+      "partition_key": "sensor-02",
+      "row_key": "2026-10-05T01:26:00.0000000Z",
+      "threshold": {
+        "edm_type": "Edm.Int64",
+        "value": 30
+      }
+    },
+    {
+      "PartitionKey": "sensor-03",
+      "RowKey": "2026-10-05T01:21:00.0000000Z",
+      "Timestamp": "2026-10-05T01:21:56.404622+00:00",
+      "etag": "W/\"datetime'2026-10-05T01%3A21%3A56.4046229Z'\"",
+      "max_temperature": 35.46,
+      "partition_key": "sensor-03",
+      "row_key": "2026-10-05T01:21:00.0000000Z",
+      "threshold": {
+        "edm_type": "Edm.Int64",
+        "value": 30
+      }
+    },
+    {
+      "PartitionKey": "sensor-03",
+      "RowKey": "2026-10-05T01:23:00.0000000Z",
+      "Timestamp": "2026-10-05T01:23:56.454575+00:00",
+      "etag": "W/\"datetime'2026-10-05T01%3A23%3A56.4545751Z'\"",
+      "max_temperature": 36.32,
+      "partition_key": "sensor-03",
+      "row_key": "2026-10-05T01:23:00.0000000Z",
+      "threshold": {
+        "edm_type": "Edm.Int64",
+        "value": 30
+      }
+    },
+    {
+      "PartitionKey": "sensor-03",
+      "RowKey": "2026-10-05T01:24:00.0000000Z",
+      "Timestamp": "2026-10-05T01:24:55.767891+00:00",
+      "etag": "W/\"datetime'2026-10-05T01%3A24%3A55.7678917Z'\"",
+      "max_temperature": 39.53,
+      "partition_key": "sensor-03",
+      "row_key": "2026-10-05T01:24:00.0000000Z",
+      "threshold": {
+        "edm_type": "Edm.Int64",
+        "value": 30
+      }
+    },
+    {
+      "PartitionKey": "sensor-03",
+      "RowKey": "2026-10-05T01:26:00.0000000Z",
+      "Timestamp": "2026-10-05T01:27:01.741335+00:00",
+      "etag": "W/\"datetime'2026-10-05T01%3A27%3A01.7413359Z'\"",
+      "max_temperature": 34.67,
+      "partition_key": "sensor-03",
+      "row_key": "2026-10-05T01:26:00.0000000Z",
+      "threshold": {
+        "edm_type": "Edm.Int64",
+        "value": 30
+      }
+    },
+    {
+      "PartitionKey": "sensor-04",
+      "RowKey": "2026-10-05T01:21:00.0000000Z",
+      "Timestamp": "2026-10-05T01:21:56.410596+00:00",
+      "etag": "W/\"datetime'2026-10-05T01%3A21%3A56.4105967Z'\"",
+      "max_temperature": 30.66,
+      "partition_key": "sensor-04",
+      "row_key": "2026-10-05T01:21:00.0000000Z",
+      "threshold": {
+        "edm_type": "Edm.Int64",
+        "value": 30
+      }
+    },
+    {
+      "PartitionKey": "sensor-04",
+      "RowKey": "2026-10-05T01:22:00.0000000Z",
+      "Timestamp": "2026-10-05T01:22:57.348885+00:00",
+      "etag": "W/\"datetime'2026-10-05T01%3A22%3A57.3488858Z'\"",
+      "max_temperature": 36.71,
+      "partition_key": "sensor-04",
+      "row_key": "2026-10-05T01:22:00.0000000Z",
+      "threshold": {
+        "edm_type": "Edm.Int64",
+        "value": 30
+      }
+    },
+    {
+      "PartitionKey": "sensor-04",
+      "RowKey": "2026-10-05T01:26:00.0000000Z",
+      "Timestamp": "2026-10-05T01:27:01.755274+00:00",
+      "etag": "W/\"datetime'2026-10-05T01%3A27%3A01.7552747Z'\"",
+      "max_temperature": 33.14,
+      "partition_key": "sensor-04",
+      "row_key": "2026-10-05T01:26:00.0000000Z",
+      "threshold": {
+        "edm_type": "Edm.Int64",
+        "value": 30
+      }
+    },
+    {
+      "PartitionKey": "sensor-05",
+      "RowKey": "2026-10-05T01:21:00.0000000Z",
+      "Timestamp": "2026-10-05T01:21:56.682402+00:00",
+      "etag": "W/\"datetime'2026-10-05T01%3A21%3A56.6824027Z'\"",
+      "max_temperature": 35.14,
+      "partition_key": "sensor-05",
+      "row_key": "2026-10-05T01:21:00.0000000Z",
+      "threshold": {
+        "edm_type": "Edm.Int64",
+        "value": 30
+      }
+    },
+    {
+      "PartitionKey": "sensor-05",
+      "RowKey": "2026-10-05T01:23:00.0000000Z",
+      "Timestamp": "2026-10-05T01:23:56.464532+00:00",
+      "etag": "W/\"datetime'2026-10-05T01%3A23%3A56.4645322Z'\"",
+      "max_temperature": 32.39,
+      "partition_key": "sensor-05",
+      "row_key": "2026-10-05T01:23:00.0000000Z",
+      "threshold": {
+        "edm_type": "Edm.Int64",
+        "value": 30
+      }
+    },
+    {
+      "PartitionKey": "sensor-05",
+      "RowKey": "2026-10-05T01:24:00.0000000Z",
+      "Timestamp": "2026-10-05T01:24:55.766895+00:00",
+      "etag": "W/\"datetime'2026-10-05T01%3A24%3A55.7668957Z'\"",
+      "max_temperature": 30.26,
+      "partition_key": "sensor-05",
+      "row_key": "2026-10-05T01:24:00.0000000Z",
+      "threshold": {
+        "edm_type": "Edm.Int64",
+        "value": 30
+      }
+    },
+    {
+      "PartitionKey": "sensor-05",
+      "RowKey": "2026-10-05T01:25:00.0000000Z",
+      "Timestamp": "2026-10-05T01:26:01.313070+00:00",
+      "etag": "W/\"datetime'2026-10-05T01%3A26%3A01.3130702Z'\"",
+      "max_temperature": 38.17,
+      "partition_key": "sensor-05",
+      "row_key": "2026-10-05T01:25:00.0000000Z",
+      "threshold": {
+        "edm_type": "Edm.Int64",
+        "value": 30
+      }
+    }
+  ],
+  "nextMarker": {}
+}
