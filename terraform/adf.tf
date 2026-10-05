@@ -5,8 +5,8 @@ locals {
   bronze_schema = "output(device_id as string, event_time as string, temperature as string, humidity as string, pressure as string)"
   silver_schema = "output(device_id as string, event_time as timestamp, temperature as double, humidity as double, pressure as double)"
 
-  # Métricas que devuelve el Data Flow de calidad
-  m = "activity('df_calidad').output.runStatus.output.metricasSink.value[0]"
+  # Métricas persistidas por el Data Flow de calidad y leídas por Lookup
+  m = "activity('leer_metricas').output.firstRow"
 }
 
 # ---------- Data Factory ----------
@@ -107,6 +107,19 @@ resource "azurerm_data_factory_dataset_parquet" "bronze" {
   compression_codec = "snappy"
 }
 
+resource "azurerm_data_factory_dataset_parquet" "calidad" {
+  name                = "ds_calidad"
+  data_factory_id     = azurerm_data_factory.main.id
+  linked_service_name = azurerm_data_factory_linked_service_data_lake_storage_gen2.datalake.name
+
+  azure_blob_fs_location {
+    file_system = "bronze"
+    path        = "_calidad"
+  }
+
+  compression_codec = "snappy"
+}
+
 resource "azurerm_data_factory_dataset_parquet" "silver" {
   name                = "ds_silver"
   data_factory_id     = azurerm_data_factory.main.id
@@ -133,7 +146,7 @@ resource "azurerm_data_factory_dataset_parquet" "gold" {
   compression_codec = "snappy"
 }
 
-# ---------- Data Flow 1: quality gate (calcula métricas, no escribe archivos) ----------
+# ---------- Data Flow 1: quality gate (persiste las métricas para Lookup) ----------
 resource "azurerm_data_factory_data_flow" "calidad" {
   name            = "df_calidad"
   data_factory_id = azurerm_data_factory.main.id
@@ -147,6 +160,9 @@ resource "azurerm_data_factory_data_flow" "calidad" {
 
   sink {
     name = "metricasSink"
+    dataset {
+      name = azurerm_data_factory_dataset_parquet.calidad.name
+    }
   }
 
   transformation {
@@ -156,7 +172,7 @@ resource "azurerm_data_factory_data_flow" "calidad" {
   script_lines = [
     "source(${local.bronze_schema}, allowSchemaDrift: false, validateSchema: false, ignoreNoFilesFound: false, format: 'parquet') ~> fuente",
     "fuente aggregate(total = count(), nulos = countIf(isNull(device_id) || isNull(event_time) || isNull(temperature) || isNull(humidity) || isNull(pressure)), distintos = countDistinct(device_id, event_time)) ~> metricas",
-    "metricas sink(validateSchema: false, skipDuplicateMapInputs: true, skipDuplicateMapOutputs: true, store: 'cache', format: 'inline', output: true, saveOrder: 1) ~> metricasSink",
+    "metricas sink(allowSchemaDrift: true, validateSchema: false, format: 'parquet', partitionFileNames:['metricas.parquet'], truncate: true, umask: 0022, preCommands: [], postCommands: [], skipDuplicateMapInputs: true, skipDuplicateMapOutputs: true, partitionBy('hash', 1)) ~> metricasSink",
   ]
 }
 
@@ -279,9 +295,25 @@ resource "azurerm_data_factory_pipeline" "batch" {
       }
     },
     {
+      name      = "leer_metricas"
+      type      = "Lookup"
+      dependsOn = [{ activity = "df_calidad", dependencyConditions = ["Succeeded"] }]
+      typeProperties = {
+        source = {
+          type          = "ParquetSource"
+          storeSettings = { type = "AzureBlobFSReadSettings", recursive = false, wildcardFileName = "*.parquet" }
+        }
+        dataset = {
+          referenceName = azurerm_data_factory_dataset_parquet.calidad.name
+          type          = "DatasetReference"
+        }
+        firstRowOnly = true
+      }
+    },
+    {
       name      = "validar_calidad"
       type      = "IfCondition"
-      dependsOn = [{ activity = "df_calidad", dependencyConditions = ["Succeeded"] }]
+      dependsOn = [{ activity = "leer_metricas", dependencyConditions = ["Succeeded"] }]
       typeProperties = {
         # Pasa si hay filas y el % de nulos no supera el umbral
         expression = {
