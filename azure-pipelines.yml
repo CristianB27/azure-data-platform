@@ -52,6 +52,8 @@ stages:
       displayName: Install Terraform
     - task: AzureCLI@2
       displayName: Terraform plan
+      env:
+        TF_VAR_synapse_admin_password: $(TF_VAR_synapse_admin_password)
       inputs:
         azureSubscription: $(serviceConnection)
         scriptType: bash
