@@ -19,3 +19,9 @@ variable "temperature_threshold" {
   type        = number
   default     = 30
 }
+
+variable "synapse_admin_password" {
+  description = "Password del admin SQL de Synapse (viene de variable secreta del pipeline)"
+  type        = string
+  sensitive   = true
+}
