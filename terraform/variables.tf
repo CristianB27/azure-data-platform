@@ -31,3 +31,15 @@ variable "synapse_location" {
   type        = string
   default     = "centralus"
 }
+
+variable "alert_email" {
+  description = "Correo que recibe alertas y avisos de presupuesto"
+  type        = string
+  default     = "overleafxdd@gmail.com"
+}
+
+variable "budget_amount" {
+  description = "Presupuesto mensual en USD"
+  type        = number
+  default     = 20
+}
