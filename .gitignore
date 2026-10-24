@@ -44,3 +44,6 @@ __pycache__/
 *.pyc
 .venv/
 .env
+
+data/malo/
+data/bueno/
