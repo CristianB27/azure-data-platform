@@ -288,7 +288,7 @@ resource "azurerm_data_factory_pipeline" "batch" {
       type      = "ExecuteDataFlow"
       dependsOn = [{ activity = "copy_csv_a_bronze", dependencyConditions = ["Succeeded"] }]
       typeProperties = {
-        dataflow           = { referenceName = azurerm_data_factory_data_flow.calidad.name, type = "DataFlowReference" }
+        dataFlow           = { referenceName = azurerm_data_factory_data_flow.calidad.name, type = "DataFlowReference" }
         compute            = { coreCount = 8, computeType = "General" }
         integrationRuntime = { referenceName = azurerm_data_factory_integration_runtime_azure.dataflow.name, type = "IntegrationRuntimeReference" }
         traceLevel         = "Fine"
@@ -325,7 +325,7 @@ resource "azurerm_data_factory_pipeline" "batch" {
             name = "df_silver"
             type = "ExecuteDataFlow"
             typeProperties = {
-              dataflow           = { referenceName = azurerm_data_factory_data_flow.silver.name, type = "DataFlowReference" }
+              dataFlow           = { referenceName = azurerm_data_factory_data_flow.silver.name, type = "DataFlowReference" }
               compute            = { coreCount = 8, computeType = "General" }
               integrationRuntime = { referenceName = azurerm_data_factory_integration_runtime_azure.dataflow.name, type = "IntegrationRuntimeReference" }
               traceLevel         = "Fine"
@@ -336,7 +336,7 @@ resource "azurerm_data_factory_pipeline" "batch" {
             type      = "ExecuteDataFlow"
             dependsOn = [{ activity = "df_silver", dependencyConditions = ["Succeeded"] }]
             typeProperties = {
-              dataflow           = { referenceName = azurerm_data_factory_data_flow.gold.name, type = "DataFlowReference" }
+              dataFlow           = { referenceName = azurerm_data_factory_data_flow.gold.name, type = "DataFlowReference" }
               compute            = { coreCount = 8, computeType = "General" }
               integrationRuntime = { referenceName = azurerm_data_factory_integration_runtime_azure.dataflow.name, type = "IntegrationRuntimeReference" }
               traceLevel         = "Fine"
