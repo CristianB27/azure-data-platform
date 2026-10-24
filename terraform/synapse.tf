@@ -25,12 +25,6 @@ resource "azurerm_synapse_firewall_rule" "allow_all" {
   end_ip_address       = "255.255.255.255"
 }
 
-# El workspace lee Silver y Gold con su identidad administrada
-resource "azurerm_role_assignment" "synapse_datalake" {
-  scope                = azurerm_storage_account.datalake.id
-  role_definition_name = "Storage Blob Data Contributor"
-  principal_id         = azurerm_synapse_workspace.main.identity[0].principal_id
-}
 
 output "synapse_sql_serverless_endpoint" {
   value = azurerm_synapse_workspace.main.connectivity_endpoints["sqlOnDemand"]
