@@ -7,7 +7,7 @@ resource "azurerm_storage_data_lake_gen2_filesystem" "synapse" {
 resource "azurerm_synapse_workspace" "main" {
   name                                 = "syn-${var.prefix}-${random_string.suffix.result}"
   resource_group_name                  = azurerm_resource_group.main.name
-  location                             = azurerm_resource_group.main.location
+  location                             = var.synapse_location
   storage_data_lake_gen2_filesystem_id = azurerm_storage_data_lake_gen2_filesystem.synapse.id
   sql_administrator_login              = "sqladminp09"
   sql_administrator_login_password     = var.synapse_admin_password
