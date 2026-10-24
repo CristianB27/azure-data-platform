@@ -25,3 +25,9 @@ variable "synapse_admin_password" {
   type        = string
   sensitive   = true
 }
+
+variable "synapse_location" {
+  description = "Region del workspace Synapse (eastus2 no admite SQL nuevo en esta suscripcion)"
+  type        = string
+  default     = "centralus"
+}
