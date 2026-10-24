@@ -35,3 +35,13 @@ resource "azurerm_role_assignment" "synapse_datalake" {
 output "synapse_sql_serverless_endpoint" {
   value = azurerm_synapse_workspace.main.connectivity_endpoints["sqlOnDemand"]
 }
+
+# Usuario como administrador del workspace (para Synapse Studio)
+resource "azurerm_synapse_role_assignment" "admin_usuario" {
+  synapse_workspace_id = azurerm_synapse_workspace.main.id
+  role_name            = "Synapse Administrator"
+  principal_id         = "89ef98c4-fc9e-401c-98a1-58db1ed553e2"
+  principal_type       = "User"
+
+  depends_on = [azurerm_synapse_firewall_rule.allow_all]
+}
