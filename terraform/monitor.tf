@@ -131,3 +131,68 @@ resource "azurerm_consumption_budget_subscription" "main" {
     contact_emails = [var.alert_email]
   }
 }
+
+# ---------- Monitoreo de Stream Analytics (solo si deploy_expensive) ----------
+
+# Alerta: el job deja de recibir/procesar eventos
+resource "azurerm_monitor_metric_alert" "asa_sin_eventos" {
+  count               = var.deploy_expensive ? 1 : 0
+  name                = "alert-asa-sin-eventos"
+  resource_group_name = azurerm_resource_group.main.name
+  scopes              = [azurerm_stream_analytics_job.main[0].id]
+  description         = "Stream Analytics no esta procesando eventos de entrada"
+  severity            = 2
+  frequency           = "PT1M"
+  window_size         = "PT5M"
+
+  criteria {
+    metric_namespace = "Microsoft.StreamAnalytics/streamingjobs"
+    metric_name      = "InputEvents"
+    aggregation      = "Total"
+    operator         = "LessThan"
+    threshold        = 1
+  }
+
+  action {
+    action_group_id = azurerm_monitor_action_group.email.id
+  }
+}
+
+# Alerta: retraso del watermark (latencia del streaming)
+resource "azurerm_monitor_metric_alert" "asa_watermark" {
+  count               = var.deploy_expensive ? 1 : 0
+  name                = "alert-asa-watermark"
+  resource_group_name = azurerm_resource_group.main.name
+  scopes              = [azurerm_stream_analytics_job.main[0].id]
+  description         = "El watermark delay de Stream Analytics supera 120 s"
+  severity            = 3
+  frequency           = "PT1M"
+  window_size         = "PT5M"
+
+  criteria {
+    metric_namespace = "Microsoft.StreamAnalytics/streamingjobs"
+    metric_name      = "OutputWatermarkDelaySeconds"
+    aggregation      = "Maximum"
+    operator         = "GreaterThan"
+    threshold        = 120
+  }
+
+  action {
+    action_group_id = azurerm_monitor_action_group.email.id
+  }
+}
+
+# Logs y métricas del job hacia Log Analytics
+resource "azurerm_monitor_diagnostic_setting" "asa" {
+  count                      = var.deploy_expensive ? 1 : 0
+  name                       = "diag-asa"
+  target_resource_id         = azurerm_stream_analytics_job.main[0].id
+  log_analytics_workspace_id = azurerm_log_analytics_workspace.main.id
+
+  enabled_log {
+    category = "Execution"
+  }
+  enabled_metric {
+    category = "AllMetrics"
+  }
+}
