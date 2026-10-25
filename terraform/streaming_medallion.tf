@@ -14,6 +14,7 @@ resource "azurerm_data_factory_linked_service_azure_blob_storage" "datalake_blob
   data_factory_id      = azurerm_data_factory.main.id
   service_endpoint     = azurerm_storage_account.datalake.primary_blob_endpoint
   use_managed_identity = true
+  storage_kind         = "StorageV2"
 }
 
 # ---------- Datasets ----------
