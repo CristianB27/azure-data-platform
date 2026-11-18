@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1420" height="380" viewBox="0 0 1420 380"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555555"/></marker></defs><rect width="1420" height="380" fill="#ffffff"/>
+<text x="30" y="38" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="600" fill="#222222" text-anchor="start">CI/CD de la infraestructura</text>
+<rect x="40" y="110" width="140" height="64" rx="4" fill="#ffffff" stroke="#555555" stroke-width="1.3"/>
+<text x="110.0" y="147.0" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="600" fill="#222222" text-anchor="middle">Rama faseN</text>
+<rect x="220" y="110" width="160" height="64" rx="4" fill="#ffffff" stroke="#555555" stroke-width="1.3"/>
+<text x="300.0" y="138.0" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="600" fill="#222222" text-anchor="middle">Pull Request</text>
+<text x="300.0" y="158.0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" fill="#6b6b6b" text-anchor="middle">GitHub</text>
+<rect x="420" y="80" width="720" height="125" rx="6" fill="#f7f7f7" stroke="#d0d0d0" stroke-width="1"/>
+<text x="432" y="102" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#6b6b6b" text-anchor="start">Azure Pipelines</text>
+<rect x="440" y="110" width="170" height="64" rx="4" fill="#ffffff" stroke="#555555" stroke-width="1.3"/>
+<text x="525.0" y="138.0" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="600" fill="#222222" text-anchor="middle">validate</text>
+<text x="525.0" y="158.0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" fill="#6b6b6b" text-anchor="middle">fmt · validate</text>
+<rect x="640" y="110" width="170" height="64" rx="4" fill="#ffffff" stroke="#555555" stroke-width="1.3"/>
+<text x="725.0" y="138.0" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="600" fill="#222222" text-anchor="middle">plan</text>
+<text x="725.0" y="158.0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" fill="#6b6b6b" text-anchor="middle">terraform plan</text>
+<rect x="840" y="110" width="280" height="64" rx="4" fill="#ffffff" stroke="#555555" stroke-width="1.3"/>
+<text x="980.0" y="138.0" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="600" fill="#222222" text-anchor="middle">apply</text>
+<text x="980.0" y="158.0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" fill="#6b6b6b" text-anchor="middle">solo main · aprobación manual</text>
+<rect x="1180" y="110" width="200" height="64" rx="4" fill="#ffffff" stroke="#555555" stroke-width="1.3"/>
+<text x="1280.0" y="138.0" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="600" fill="#222222" text-anchor="middle">Azure</text>
+<text x="1280.0" y="158.0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" fill="#6b6b6b" text-anchor="middle">rg-p09utb-data</text>
+<path d="M180,142 L220,142" fill="none" stroke="#555555" stroke-width="1.3" marker-end="url(#a)"/>
+<path d="M380,142 L440,142" fill="none" stroke="#555555" stroke-width="1.3" marker-end="url(#a)"/>
+<path d="M610,142 L640,142" fill="none" stroke="#555555" stroke-width="1.3" marker-end="url(#a)"/>
+<path d="M810,142 L840,142" fill="none" stroke="#555555" stroke-width="1.3" marker-end="url(#a)"/>
+<path d="M1120,142 L1180,142" fill="none" stroke="#555555" stroke-width="1.3" marker-end="url(#a)"/>
+<rect x="640" y="260" width="480" height="60" rx="4" fill="#ffffff" stroke="#555555" stroke-width="1.3"/>
+<text x="880.0" y="286.0" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="600" fill="#222222" text-anchor="middle">sc-p09utb-azure</text>
+<text x="880.0" y="306.0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" fill="#6b6b6b" text-anchor="middle">Workload Identity Federation (OIDC), sin contraseñas</text>
+<path d="M880,260 L880,205" fill="none" stroke="#555555" stroke-width="1.3" stroke-dasharray="5 4" marker-end="url(#a)"/>
+<rect x="1180" y="260" width="200" height="60" rx="4" fill="#ffffff" stroke="#555555" stroke-width="1.3"/>
+<text x="1280.0" y="286.0" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="600" fill="#222222" text-anchor="middle">Estado de Terraform</text>
+<text x="1280.0" y="306.0" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" fill="#6b6b6b" text-anchor="middle">stp09utbtfstate01</text>
+<path d="M1280,260 L1280,174" fill="none" stroke="#555555" stroke-width="1.3" stroke-dasharray="5 4"/>
+<text x="40" y="240" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#6b6b6b" text-anchor="start">En un PR solo corren validate y plan.</text>
+<text x="40" y="260" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#6b6b6b" text-anchor="start">deployExpensive enciende o apaga</text>
+<text x="40" y="280" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#6b6b6b" text-anchor="start">los recursos costosos.</text></svg>
